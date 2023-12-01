@@ -1,0 +1,110 @@
+@import "https://fonts.googleapis.com/css?family=Lato:400,700";
+
+body {
+  font-family:lato,sans-serif;
+  color:#4a4a4a;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+  margin:0;
+  padding:0
+}
+.center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Это важно для выравнивания по центру по вертикали */
+}
+
+form {
+  width:350px;
+  position:relative;
+  background-color: #fff; /* Добавил цвет фона формы */
+  padding: 20px; /* Добавил отступ вокруг формы */
+  border-radius: 8px; /* Добавил скругление углов */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+}
+form .form-field::before {
+  font-size:20px;
+  position:absolute;
+  left:15px;
+  top:17px;
+  color:#888;
+  content:" ";
+  display:block;
+  background-size:cover;
+  background-repeat:no-repeat
+}
+form .form-field:nth-child(1)::before {
+  background-image:url(img/user-icon.png);
+  width:20px;
+  height:20px;
+  top:15px
+}
+form .form-field:nth-child(2)::before {
+  background-image:url(img/lock-icon.png);
+  width:16px;
+  height:16px
+}
+form .form-field {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-pack:justify;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+  margin-bottom:1rem;
+  position:relative
+}
+form input {
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd; /* Добавил границу вокруг инпутов */
+  padding: .9rem .7rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  font-size: 17px;
+  color: #4a4a4a;
+  text-indent: 40px;
+}
+form .btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: .9rem 2.5rem;
+  text-align: center;
+  background-color: #47ab11;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  font-size: 17px;
+}
+
+.gradient {
+  height: 100vh; /* Тут высота блока */
+  width: 100%; /* Тут длина */
+  background: linear-gradient(149deg, rgba(24, 187, 156, 1) 0%, rgba(106, 57, 175, 1) 42%, rgba(187, 24, 148, 1) 72%, rgba(115, 53, 134, 1) 100%);
+  animation: gradient 10s infinite linear; /* 10s - скорость анимации */
+  background-size: 400%; /* Можно менять и подбирать интенсивность */
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 80% 0%;
+  }
+  50% {
+      background-position: 20% 100%;
+  }
+  100% {
+      background-position: 80% 0%;
+  }
+}

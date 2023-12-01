@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="major">Мои бронирования</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Продукт</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Итого</th>
+        <th scope="col">Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking, product in reservations_and_products %}
+        <tr>
+          <td>{{ booking.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ booking.date.strftime('%Y-%m-%d %H:%M') }}</td>
+          <td>{{ booking.status }}</td>
+          <td>{{ booking.total }}</td>
+          <td>
+            <form method="post" action="{{ url_for('list_reserv') }}">
+              <input type="hidden" name="delete_booking_id" value="{{ booking.id }}">
+              <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      <div class="form-field">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <h3> {{ message }} </h3>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    </tbody>
+  </table>
+{% endblock %}

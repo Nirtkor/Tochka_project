@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="major">Все бронирования</h2>
+  <form method="post" action="{{ url_for('moderating') }}">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Пользователь</th>
+          <th scope="col">Продукт</th>
+          <th scope="col">Дата</th>
+          <th scope="col">Статус</th>
+          <th scope="col">Итого</th>
+          <th scope="col">Изменить статус</th>
+          <th scope="col">Удалить бронирование</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in bookings %}
+          <tr>
+            <td>{{ booking.id }}</td>
+            <td>{{ booking.user.name }}</td>
+            <td>{{ booking.product.name }}</td>
+            <td>{{ booking.date.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ booking.status }}</td>
+            <td>{{ booking.total }}</td>
+            <td>
+              <select name="status_{{ booking.id }}">
+                <option value="created" {% if booking.status == 'created' %}selected{% endif %}>Created</option>
+                <option value="confirmed" {% if booking.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                <option value="completed" {% if booking.status == 'completed' %}selected{% endif %}>Completed</option>
+              </select>
+            </td>
+            <td>
+                <button type="submit" name="delete_{{ booking.id }}" class="btn btn-danger">Удалить</button>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <input type="submit" value="Обновить статусы" class="btn btn-primary">
+    <div class="form-field">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <h3> {{ message }} </h3>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+  </form>
+{% endblock %}

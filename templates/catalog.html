@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+  <title>Креативное пространство</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+  <noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+</head>
+<body>
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <header id="header">
+        <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Логотип" style="height: 85px";>
+        </div>
+        <div class="content">
+          <div class="inner">
+            <h1>Каталог пространств</h1>
+          </div>
+        </div>
+      </header>
+        <form action="{{ url_for('filter_and_search') }}" method="GET" class="mb-4">
+          <div class="input-group">
+              <input type="text" name="query" class="form-control" placeholder="Поиск по названию...">
+              <select name="sort" class="form-select">
+                  <option value="asc">По возрастанию цены</option>
+                  <option value="desc">По убыванию цены</option>
+                  <option value="area">По возрастанию площади</option>
+                  <option value="capacity">По возрастанию вместительности</option>
+              </select>
+              <button type="submit" class="btn btn-outline-secondary">Применить</button>
+          </div>
+      </form>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='images/area/{}.jpg'.format(product.id)) }}" alt="{{ product.name }}" class="card-img-top" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ product.name }}</h2>
+                    <p class="card-text">Описание: {{ product.description }}</p>
+                    <p class="card-text">Цена: {{ product.price }} Р</p>
+                    <p class="card-text">Площадь: {{ product.area }} m²</p>
+                    <p class="card-text">Сколько человек поместится: {{ product.capacity }} человек</p>
+                    <p class="card-text">Оборудование: {{ product.equipment }}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <!-- Добавьте кнопки или другие элементы управления, если необходимо -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+{% endblock %}

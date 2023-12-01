@@ -1,0 +1,439 @@
+{% block content %}
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Креативное пространство</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Логотип" style="height: 85px";>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Tochka</h1>
+								<p> Нет места, где организовать событие?<br />
+								Вы обратились по нужному адресу! </p>
+							</div>
+							<div class="form-field">
+								{% with messages = get_flashed_messages() %}
+								{% if messages %}
+								{% for message in messages %}
+								<h3> {{ message }} </h3>
+								{% endfor %}
+								{% endif %}
+								{% endwith %}
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">О нас</a></li>
+								<li><a href="#work">Где найти?</a></li>
+								<li><a href="#about">ЛК</a></li>
+								<li><a href="#contact">Обратная связь</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">О нас</h2>
+								<span class="image main"><img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt="" /></span>
+								<p>Челябинская региональная молодежная общественная организация поддержки инициатив «Молодежная палата» — это место объединения активной молодежи, которая стремится развивать надпрофессиональные навыки и реализовать свои идеи.</p>
+								<p>Сделать это можно находясь в отделах «Молодежной палаты»:
+                  <br>▪ PR-служба
+                  <br>▪ Общественные коммуникации
+                  <br>▪ Канцелярия
+                  <br>▪ Проектная деятельность
+                  <br>▪ Волонтерский центр
+                  
+                  <br><br>Главной задачей нашей деятельности является развитие Челябинской области и ее молодежи, а также повышение знаний членов организации</p>
+							</article>
+
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Где мы находимся?</h2>
+								<span class="image main"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A27dd71dc77d2580d71cb0dac7ea4b0b77b5d718e7e023228240cce2bd4da34bb&amp;width=547&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script></span>
+								<p>На данный момент, у нас открыт и работает один офис и один коворкинг в самом центре Челябинска!
+									<br> Но мы открыты к сорудничеству, чтобы подать заявку на открытие коворкинга по франшизе, пишите нам по форме обратной связи!
+								</p>
+								
+							</article>
+
+						<!-- About -->
+						<article id="about">
+							<h2 class="major">Личный кабинет</h2>
+							<span class="image main"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt="" /></span>
+							
+							<!-- Кнопка "Давайте знакомиться!" (регистрация и редирект на signup.html) -->
+							<a href="{{ url_for('signup') }}" class="button special">Давайте знакомиться!</a>
+							
+							<!-- Кнопка "Вы уже смешарик?" (редирект на sign_in.html) -->
+							<a href="{{ url_for('login') }}" class="button">Вы уже смешарик?</a>
+
+						</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Вопросы?</h2>
+								<form method="post" action="{{ url_for('contact') }}">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Ваше имя</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Сообщение</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Отправить сообщение" class="primary" /></li>
+										<li><input type="reset" value="Отмена" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="https://vk.com/creativespace74" class="icon brands fa-vk"><span class="label">vk</span></a></li>
+									<li><a href="https://www.youtube.com/channel/UCTarGEY2RPbUHm6FWIzRB1g" class="icon brands fa-youtube"><span class="label">youtube</span></a></li>
+									<li><a href="https://молпалата.рф" class="icon brands fa-opera"><span class="label">opera</span></a></li>
+									<li><a href="https://github.com/Nirtkor" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+
+						<!-- Elements -->
+							<article id="elements">
+								<h2 class="major">Elements</h2>
+
+								<section>
+									<h3 class="major">Text</h3>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h4>Blockquote</h4>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h4>Preformatted</h4>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h3 class="major">Lists</h3>
+
+									<h4>Unordered</h4>
+									<ul>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Alternate</h4>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Ordered</h4>
+									<ol>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis viverra.</li>
+										<li>Felis enim feugiat.</li>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis lorem.</li>
+										<li>Felis enim et feugiat.</li>
+									</ol>
+									<h4>Icons</h4>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-vkr"><span class="label">vk</span></a></li>
+										<li><a href="#" class="icon brands fa-youtube"><span class="label">youtube</span></a></li>
+										<li><a href="#" class="icon brands fa-opera"><span class="label">opera</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+
+									<h4>Actions</h4>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+									<h4>Alternate</h4>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h3 class="major">Buttons</h3>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Primary</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button primary disabled">Disabled</span></li>
+										<li><span class="button disabled">Disabled</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Form</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="demo-name">Name</label>
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+											</div>
+											<div class="field half">
+												<label for="demo-email">Email</label>
+												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
+											</div>
+											<div class="field">
+												<label for="demo-category">Category</label>
+												<select name="demo-category" id="demo-category">
+													<option value="">-</option>
+													<option value="1">Manufacturing</option>
+													<option value="1">Shipping</option>
+													<option value="1">Administration</option>
+													<option value="1">Human Resources</option>
+												</select>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+												<label for="demo-priority-low">Low</label>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-high" name="demo-priority">
+												<label for="demo-priority-high">High</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-copy" name="demo-copy">
+												<label for="demo-copy">Email me a copy</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-human" name="demo-human" checked>
+												<label for="demo-human">Not a robot</label>
+											</div>
+											<div class="field">
+												<label for="demo-message">Message</label>
+												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Заходит как-то Олег Юрьевич в бар, а там приложение на фласке пишут</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+      <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+      <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+	  <div class="warning warning--active">
+		<div class="warning__text">Привет, это журнал «Код»! Мы используем куки.</div>
+		<button class="warning__apply" type="button">OK</button>
+		<a class="warning__read" href="https://ru.wikipedia.org/wiki/Cookie" target="_blank">Что такое куки</a>
+	  </div>
+	<style>
+		.warning {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: none;
+	justify-content: center;
+	width: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	background-color: yellow;
+}
+
+.warning--active {
+	display: flex;
+}
+
+.warning__text {
+	margin-right: 30px;
+}
+
+.warning__read {
+	display: block;
+	margin-left: 15px;
+}
+	</style>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.js">  
+	</script>
+	<script type="text/javascript">
+		const container = document.querySelector(".warning");
+		if (document.cookie.indexOf("warning") != -1) {
+			container.classList.remove("warning--active");
+		}
+	
+		if (document.querySelector(".warning")) {
+		  const apply = container.querySelector(".warning__apply");
+		  apply.addEventListener("click", () => {
+			container.classList.remove("warning--active");
+			document.cookie = "warning=true; max-age=2592000; path=/";
+		  });
+		};
+	</script>
+	
+	</body>
+</html>
+
+
+{% endblock %}

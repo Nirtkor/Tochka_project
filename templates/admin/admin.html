@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Административная панель</title>
+    <!-- Сюда могут быть вставлены ссылки на стили и скрипты, если необходимо -->
+</head>
+<body>
+    <div id="admin-header">
+        <h1>Добро пожаловать в административную панель</h1>
+    </div>
+    <div id="admin-body">
+        <ul>
+            <li><a href="{{ url_for('user.index_view') }}">Пользователи</a></li>
+            <li><a href="{{ url_for('reservation.index_view') }}">Резервации</a></li>
+            <li><a href="{{ url_for('product.index_view') }}">Продукты</a></li>
+        </ul>
+    </div>
+    <div id="admin-footer">
+        <p>&copy; 2023 Company Name</p>
+    </div>
+</body>
+</html>

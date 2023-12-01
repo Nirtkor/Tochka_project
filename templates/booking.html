@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="major">Бронирование</h2>
+    <form method="post" action="{{ url_for('booking') }}">
+        <div class="fields">
+            <div class="field half">
+                <label for="product_id">Выберите продукт</label>
+                <select name="product_id" id="product_id">
+                    {% for product in products %}
+                        <option value="{{ product.id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="field half">
+                <label for="date">Дата бронирования</label>
+                <input type="datetime-local" name="date" id="date" required>
+            </div>
+            <div class="field half">
+                <label for="booking_hours">Выберите время (в часах)</label>
+                <select name="booking_hours" id="booking_hours" required>
+                    <option value="1">1 час</option>
+                    <option value="2">2 часа</option>
+                    <option value="3">3 часа</option>
+                    <option value="4">4 часа</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-field">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <h3> {{ message }} </h3>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <ul class="actions">
+            <li><input type="submit" value="Забронировать" class="primary" /></li>
+            <li><input type="reset" value="Отмена" /></li>
+        </ul>
+    </form>
+{% endblock %}
